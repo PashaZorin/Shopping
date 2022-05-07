@@ -1,0 +1,39 @@
+.header {
+  margin-bottom: 30px;
+  background-color: #eee;
+  padding: 30px 0;
+  transition: all 0.5s;
+  
+  &__fixed {
+    margin-bottom: 30px;
+    background-color: #eee;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    opacity: 0.8;
+    &:hover {
+      opacity:1;
+  }
+}
+  
+  &__nav {
+    margin: 0 auto;
+  }
+  &__items {
+    display: flex;
+    //gap: 30px;
+    justify-content: center;
+  }
+
+  &__item-link {
+    color: #000;
+    padding: 15px;
+    transition: all 0.3s;
+    :hover {
+      cursor: pointer;
+    }
+  }
+  &__item-link.active {
+    background-color: #d9d9d9;
+  }
+}

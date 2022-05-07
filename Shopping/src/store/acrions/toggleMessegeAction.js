@@ -1,0 +1,2 @@
+
+export const TOGGLE_MESSEGE = 'TOGGLE_MESSEGE'
