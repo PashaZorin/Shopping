@@ -1,5 +1,5 @@
-import React from "react";
-import { Formik, Form } from "formik";
+import React, { useRef } from "react";
+import { Formik, Form} from "formik";
 import * as yup from 'yup';
 import CustomInput from "./CustomInput";
 import './style.scss'
@@ -17,8 +17,9 @@ const FormShopping = ({cards}) => {
 	const dispatch = useDispatch()
 	const chooses = cards.filter(el => el.id === id)
 	
-	//const inputNumberRef = useRef()
-	//console.log(inputNumberRef.current,'inputNumberRef');
+	const inputNumberRef = useRef()
+	console.log(inputNumberRef.current,'inputNumberRef');
+	//console.log(inputNumberRef,'inputNumberRef');
 	
 	const initialValues = {
 		name :'',
@@ -32,9 +33,9 @@ const FormShopping = ({cards}) => {
 	const validationSchema = yup.object().shape({
 		name: yup.string().required('The field is required').matches(/[A-Za-zА-Яа-я ]/, 'only letters,'),
 		surName : yup.string().required('The field is required').matches(/[A-Za-zА-Яа-я ]/, 'only letters'),
-		age: yup.number().required('The field is required').positive().integer(),
-		city : yup.string().required('The field is required').matches(/[A-Za-zА-Яа-я ]/, 'only letters'),
-		//phone : yup.number().required('Поле обязательно')
+		age: yup.number().required('The field is required').typeError('only numbers'),
+		city: yup.string().required('The field is required').matches(/[A-Za-zА-Яа-я ]/, 'only letters'),
+		phone : yup.number().required('The field is required'),
 	})
 
 	const onSubmit = (values, { resetForm }) => {
@@ -100,17 +101,17 @@ const FormShopping = ({cards}) => {
 						placeholder='phone'
 						className='form__item'
 					/>*/}
-					<NumberFormat
-						//ref={inputNumberRef}
+					{/*<NumberFormat
+						//onBlur={field.onBlur}
 						//name='phone'
-						//type='extt'
+						//type='text'
 						//placeholder='phone'
 
 						format="+38 (0##) ###-##-##"
 						className="form__item"
 						mask="#"
 						allowEmptyFormatting
-					/>
+					/>*/}
 
 					<div className="form__btns">
             			<Button
@@ -126,7 +127,6 @@ const FormShopping = ({cards}) => {
 								dispatch(toggleFormAC())
 							}}
 							className='form__btn'
-							type='submit' 
 							backgroundColor={"red"}
 							
             			/>
