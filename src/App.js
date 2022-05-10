@@ -23,6 +23,7 @@ function App() {
   }, [dispatch])
 
   const arrProduct = useSelector(state => state.product.data)
+  console.log(arrProduct);
 
   return (
     <div className="wrapper">
@@ -31,9 +32,9 @@ function App() {
       <AlertMessege messege="Спасибо за покупку" />
 			<FormShopping cards={arrProduct} />
       <Routes>
-        <Route path="/" element={<Cards cards={arrProduct}/>} />
-        <Route path="/PageFavorites" element={<PageFavorites cards={arrProduct} />} />
-        <Route path="/PageCart" element={<PageCart cards={arrProduct} />} />
+        <Route path="/projectPZ/" element={<Cards cards={arrProduct}/>} />
+        <Route path="/projectPZ/PageFavorites" element={<PageFavorites cards={arrProduct} />} />
+        <Route path="/projectPZ/PageCart" element={<PageCart cards={arrProduct} />} />
       </Routes>
 
     </div>

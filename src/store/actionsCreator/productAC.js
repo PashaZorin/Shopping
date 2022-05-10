@@ -3,9 +3,9 @@ import { GET_PRODUCT, TOGGLE_FAVORITES, TOGGLE_CARTS } from "../acrions/productA
 
 export const getProductAC = () => {
 	return async (dispatch) => {
-		const { products } = await fetch('http://localhost:3000/Data.json')
+		const  {products}  = await fetch('http://localhost:3000/projectPZ//Data.json')
 			.then(response => response.json())
-			
+			console.log(products,'products');
 		dispatch({ type: GET_PRODUCT, payload: products })
 		
 	}
