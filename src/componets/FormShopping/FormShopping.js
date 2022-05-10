@@ -19,7 +19,6 @@ const FormShopping = ({cards}) => {
 	
 	const inputNumberRef = useRef()
 	console.log(inputNumberRef.current,'inputNumberRef');
-	//console.log(inputNumberRef,'inputNumberRef');
 	
 	const initialValues = {
 		name :'',
@@ -35,7 +34,7 @@ const FormShopping = ({cards}) => {
 		surName : yup.string().required('The field is required').matches(/[A-Za-zА-Яа-я ]/, 'only letters'),
 		age: yup.number().required('The field is required').typeError('only numbers'),
 		city: yup.string().required('The field is required').matches(/[A-Za-zА-Яа-я ]/, 'only letters'),
-		phone : yup.number().required('The field is required'),
+		//phone : yup.number().required('The field is required'),
 	})
 
 	const onSubmit = (values, { resetForm }) => {
@@ -101,17 +100,13 @@ const FormShopping = ({cards}) => {
 						placeholder='phone'
 						className='form__item'
 					/>*/}
-					{/*<NumberFormat
-						//onBlur={field.onBlur}
-						//name='phone'
-						//type='text'
-						//placeholder='phone'
+					<NumberFormat
 
 						format="+38 (0##) ###-##-##"
 						className="form__item"
 						mask="#"
 						allowEmptyFormatting
-					/>*/}
+					/>
 
 					<div className="form__btns">
             			<Button
