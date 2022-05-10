@@ -11,6 +11,13 @@
 	  transition: border-color 0.3s;
 	  width: 130px;
 	}
+	@media (max-width: 450px) {
+	  padding: 10px;
+	  border-radius: 10px;
+	  border-color: transparent;
+	  transition: border-color 0.3s;
+	  width: 130px;
+	}
 	&__btn:hover {
 		padding: 5px;
 		border-radius: 5px;

@@ -14,34 +14,58 @@
 	  width: 630px;
 	  background-color: #fff;
 	  padding: 30px 0 30px 0;
-	  gap: 10px;
+	  gap: 15px;
 	  display: flex;
 	  flex-direction: column;
 	  align-items: center;
 	  justify-content: center;
+	  text-align: center;
+	  @media (max-width: 800px) {
+		width:70%;
+  
+  
+	  }
 	}
 	&__item {
-	  width: 250px;
+	  width: 50%;
 	  padding: 5px;
 	  border-radius: 4px;
+	  @media (max-width: 700px ) {
+		width: 75%;
+		
+	}
 	}
 	&__title {
 	  margin-bottom: 20px;
 	  font-size: 30px;
 	  color: #443e3e;
+	  padding: 0 15px;
+	  @media (max-width: 450px ) {
+		  font-size: 20px;
+		  
+	  }
 	}
 	&__btns {
 	  display: flex;
-	  width: 250px ;
 	  justify-content: space-around;
+	  width: 50%;
+	  @media (max-width: 700px ) {
+		width: 75%;
+		
+	}
 	  
 	}
 	&__btn {
 	  width: 70px;
-	  padding: 5px;
+	  width: 40%;
+	  padding: 10px;
 	  cursor: pointer;
 	  border-radius: 5px;
 	  border-color: transparent;
+	  @media (max-width: 450px ) {
+		padding: 5px;
+		
+	}
 	}
 	&__error{
 		transform: translateY(-7px) translateX(-67px);

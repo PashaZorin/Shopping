@@ -5,7 +5,7 @@ import './button.scss'
 const Button = (props) => {
 	const { text, onClick, backgroundColor,className, type } = props
 	return (
-		<button className='wrapper__btn'
+	<button className={className}
 			onClick={onClick}
 			//id={id}
 			type={type}

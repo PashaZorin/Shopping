@@ -6,12 +6,12 @@
     flex-wrap: wrap;
     gap: 18px;
     padding: 0 20px 20px 20px;
-    justify-content: center;
     @media (max-width: 1200px) {
       max-width: 1000px;
-
+      
     }
     @media (max-width: 420px) {
+      justify-content: center;
       max-width: 360px;
 
 
