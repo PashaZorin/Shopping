@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Formik, Form} from "formik";
 import * as yup from 'yup';
 import CustomInput from "./CustomInput";
@@ -17,8 +17,7 @@ const FormShopping = ({cards}) => {
 	const dispatch = useDispatch()
 	const chooses = cards.filter(el => el.id === id)
 	
-	const inputNumberRef = useRef()
-	console.log(inputNumberRef.current,'inputNumberRef');
+	//const inputNumberRef = useRef()
 	
 	const initialValues = {
 		name :'',

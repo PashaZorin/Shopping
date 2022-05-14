@@ -5,7 +5,8 @@ export const getProductAC = () => {
 	return async (dispatch) => {
 		const  {products}  = await fetch('http://localhost:3000/projectPZ//Data.json')
 			.then(response => response.json())
-			console.log(products,'products');
+			.catch((e) => console.log(`Error! ${e}`));
+		
 		dispatch({ type: GET_PRODUCT, payload: products })
 		
 	}

@@ -23,7 +23,6 @@ function App() {
   }, [dispatch])
 
   const arrProduct = useSelector(state => state.product.data)
-  console.log(arrProduct);
 
   return (
     <div className="wrapper">

@@ -9,7 +9,6 @@ const Header = () => {
 	useEffect((e) => {
 		document.addEventListener('scroll', handlerScroll)
 		return function () {
-			console.log('remove'); 
 			document.removeEventListener('scroll', handlerScroll)
 		} 
 	}, [addScroll])

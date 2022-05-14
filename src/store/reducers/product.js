@@ -2,7 +2,98 @@ import { GET_PRODUCT, TOGGLE_FAVORITES, TOGGLE_CARTS } from "../acrions/productA
 
 
 const initialState = {
-    data: [],
+    data: [
+        {
+			"name": "Nokia",
+			"price":30,
+			"id":1,
+			"url":"https://klike.net/uploads/posts/2020-07/1594277952_8.jpg",
+			"color":"red",
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Meizu",
+			"price": 40,
+			"id": 2,
+			"url": "https://klike.net/uploads/posts/2020-07/1594277956_4.jpg",
+			"color":"blue",
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Samsung",
+			"price": 50,
+			"id": 3,
+			"url": "https://klike.net/uploads/posts/2020-07/1594278037_7.jpg",
+			"color":"black",
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Redmi",
+			"price": 60,
+			"id": 4,
+			"url": "https://klike.net/uploads/posts/2020-07/1594277980_16.jpg",
+			"color":"black", 
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Aple",
+			"price": 70,
+			"id": 5,
+			"url": "https://klike.net/uploads/posts/2020-07/1594277998_15.jpg",
+			"color":"yellow",
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Redmi",
+			"price": 80,
+			"id": 6,
+			"url": "https://klike.net/uploads/posts/2020-07/1594278042_14.jpg",
+			"color":"red",
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "HUAWEI",
+			"price": 90,
+			"id": 7,
+			"url": "https://klike.net/uploads/posts/2020-07/1594278051_10.jpg",
+			"color":"green",
+			"isInCart" : false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Nokia",
+			"price": 100,
+			"id": 8,
+			"url": "https://klike.net/uploads/posts/2020-07/1594278033_11.jpg",
+			"color":"orange",
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Redmi",
+			"price": 100,
+			"id": 9,
+			"url": "https://klike.net/uploads/posts/2020-07/1594278003_13.jpg",
+			"color":"red",
+			"isInCart":false,
+			"isInFavorite":false
+		  },
+		  {
+			"name": "Nokia",
+			"price": 20,
+			"id": 10,
+			"url": "https://klike.net/uploads/posts/2020-07/1594277952_8.jpg",
+			"color":"red",
+			"isInCart":false,
+			"isInFavorite":false
+		  }
+    ],
     
 }
 
@@ -26,6 +117,7 @@ const product = (state = initialState, action) => {
                 }
                     return e
             })
+            console.log(product,'product');
             return { ...state, data: product };
         
         

@@ -6,7 +6,6 @@ import "./cards.scss"
 
 
 const Cards = ({ cards }) => {
-	console.log(typeof(cards))
 	return (
 		<div className="content__conteiner" >
 			{cards.map(element => (
