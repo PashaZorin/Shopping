@@ -9,6 +9,7 @@ import { toggleFormAC } from "../../store/actionsCreator/formAC";
 import { toggleCartAC } from "../../store/actionsCreator/productAC";
 import {toggleMessegeAC} from "../../store/actionsCreator/messegeAC"
 import NumberFormat from 'react-number-format';
+import { toggleScrollAC } from "../../store/actionsCreator/scrollAC";
 
 
 
@@ -39,6 +40,7 @@ const FormShopping = ({cards}) => {
 	const onSubmit = (values, { resetForm }) => {
 		dispatch(toggleCartAC(id))
 		dispatch(toggleFormAC())
+		toggleScrollAC()
 		resetForm()
 		dispatch(toggleMessegeAC())
 		setTimeout(() => {
@@ -56,7 +58,13 @@ const FormShopping = ({cards}) => {
 	return (
 		<div
 			className='form__conteiner'
-			onClick={(e)=> e.target.className === 'form__conteiner' ?  dispatch(toggleFormAC()) : null }
+			onClick={(e) => { 
+				if (e.target.className === 'form__conteiner') {
+					dispatch(toggleFormAC())
+					dispatch(toggleScrollAC())
+				}
+				//e.target.className === 'form__conteiner' ?  dispatch(toggleFormAC()) : null 
+			}}
 		>
 
 
@@ -119,6 +127,7 @@ const FormShopping = ({cards}) => {
 							text='Cansel'
 							onClick={() => {
 								dispatch(toggleFormAC())
+								dispatch(toggleScrollAC())
 							}}
 							className='form__btn'
 							backgroundColor={"red"}

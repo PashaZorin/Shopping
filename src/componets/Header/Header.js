@@ -20,7 +20,7 @@ const Header = () => {
 	
 	 
 	return (
-		<header className={addScroll < 100 ? 'header ' : 'header__fixed '}>
+		<header className={addScroll < 150 ? 'header ' : 'header__fixed '}>
 			<nav className='header__nav'>
 				<ul className='header__items'>
 					<li className='header__item' >

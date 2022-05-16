@@ -10,8 +10,8 @@
       max-width: 1000px;
       
     }
-    @media (max-width: 420px) {
-      justify-content: center;
+    
+    @media (max-width: 450px) {
       max-width: 360px;
 
 
@@ -28,10 +28,10 @@
       width: calc((100% - 20px) / 2);
       
     }
-    @media (max-width: 420px) {
-      width: calc((100% - 60px));
+    //@media (max-width: 420px) {
+    //  width: calc((100% - 60px));
       
-    }
+    //}
     }
   }
   &__item-info {
@@ -40,11 +40,20 @@
     flex-direction: column;
     gap: 12px;
     font-size: 1.5rem;
+    @media (max-width: 450px) {
+      margin-bottom: 20px;
+      
+    }
   }
   &__item-content {
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 450px) {
+     flex-direction: column;
+     position: relative;
+      
+    }
   }
   //  &__img-conteiner {
     //  }
@@ -56,8 +65,12 @@
       @media (max-width: 560px) {
         height: 200px;
       }
-      @media (max-width: 420px) {
-        height: 300px;
+      @media (max-width: 400px) {
+        height: 180px;
+        
+      }
+      @media (max-width: 370px) {
+        height: 110px;
         
       }
 
@@ -74,33 +87,104 @@
     //}
     
   }
-  &__item-star.active {
-    fill: #ee1;
-  }
-  &__item-star.active:hover {
-    fill: #ee1;
-    transition: fill 0.3s;
-  }
-  &__item-star:hover {
+  &__item-star {
     fill: #eec;
-    cursor: pointer;
+    transition: all 0.4s;
+    @media (max-width: 450px) {
+      position: absolute;
+      top: 10%;
+      left: 70%;
+    }
+    @media (min-width: 450px) {
+      &:hover{
+        cursor: pointer;
+        fill: rgba(238, 238, 17, 0.482);
+      }
+    }
+    
+    
   }
+  &__item-star.active{
+    fill: #ee1;
+    transform: rotateY(180deg);
+
+  }
+
   &__item-btn {
     padding: 5px;
     border-radius: 5px;
     border-color: transparent;
     transition: border-color 0.3s;
+    
+    
   }
   &__item-buttons {
     display: flex;
     align-items: end;
     flex-direction: column;
     gap: 100px;
+    @media (max-width: 560px) {
+      gap: 80px;
+    }
+    @media (max-width: 450px) {
+      display: block;
+      
+    }
+    //@media (max-width: 370px) {
+    //  gap: 50px;
+      
+    //}
   }
   &__conteiner-buttons {
     display: flex;
     flex-direction: column;
     gap:10px ;
+    @media (max-width: 450px) {
+      gap: 15px;
+      
+      
+    }
+
+    
+  }
+  &__conteiner-btn{
+    padding: 4px;
+    border-radius: 6px;
+    border-color: transparent;
+    @media (max-width: 450px) {
+      padding: 8px;
+      
+    }
+    &:hover{
+      cursor: pointer;
+      border-color: #d0cece;
+    }
+  }
+}
+
+.hidden{
+  @media (min-width: 600px) {
+    overflow: hidden;
+    margin-right: 17px;
   }
 
 }
+.scroll{
+  @media (min-width: 600px) {
+    overflow: scroll;
+    margin-right: 0;
+  }
+  
+}
+
+.messege{
+  background-color: #008000de;
+  padding: 28px;
+  position: absolute;
+  font-size: 2rem;
+  color: darkgray;
+  border-radius: 10px;
+  top: 16%;
+  left: 56%;
+}
+

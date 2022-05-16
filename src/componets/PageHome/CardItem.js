@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { toggleFavoriteAC } from "../../store/actionsCreator/productAC";
 import { toggleModalAC } from "../../store/actionsCreator/modalAC";
+import { toggleScrollAC } from "../../store/actionsCreator/scrollAC";
 
 const CardItem = ({ element }) => {
 	
@@ -45,10 +46,13 @@ const CardItem = ({ element }) => {
 							dispatch(toggleFavoriteAC(element.id))
 						}}
 					/>
+					
 					<Button
+						className="content__conteiner-btn"
 						text={element.isInCart ? "Delete from cart" : "Add to cart"}
 						onClick={() => {
 							dispatch(toggleModalAC(element.id))
+							dispatch(toggleScrollAC(true))
 						}}
 
 					/>

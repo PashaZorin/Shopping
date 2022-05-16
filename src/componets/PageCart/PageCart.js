@@ -5,7 +5,7 @@ import { toggleModalAC } from "../../store/actionsCreator/modalAC";
 import {toggleFormAC} from "../../store/actionsCreator/formAC"
 import { ReactComponent as Svg } from "../PageHome/svg.svg"
 import Button from "../Button/Button";
-//import PageHome from '../PageHome/PageHome';
+import {toggleScrollAC} from "../../store/actionsCreator/scrollAC"
 
 const PageCart = ({ cards }) => {
 
@@ -57,17 +57,21 @@ const PageCart = ({ cards }) => {
 				
 				<div className="content__conteiner-buttons" >
 					<Button
+						className="content__conteiner-btn"
 						text={element.isInCart ? "Delete from cart" : "Add to cart"}
 						onClick={() => {
 							dispatch(toggleModalAC(element.id))
 						}}
+						
+						
 					/>
 
 					<Button
 						text={'buy'}
-
+						className="content__conteiner-btn"
 						onClick={() => {
 							dispatch(toggleFormAC(element.id))
+							dispatch(toggleScrollAC())
 						}}
 					/>
 

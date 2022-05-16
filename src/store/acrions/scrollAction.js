@@ -1,0 +1,1 @@
+export const TOGGLE_SCROLL = 'TOGGLE_SCROLL'
