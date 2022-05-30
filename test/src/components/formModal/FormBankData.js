@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../buttons/Button";
 //import { FormInput } from "./FormInput";
@@ -9,18 +9,19 @@ import {
   contact,
   invoiseAddress,
 } from "../../store/redusers/formsSlise";
+import { setDataWithBank } from "../../store/redusers/dataSlise";
 
 const FormBankData = () => {
-  const [value, setValue] = useState({});
-  const formActive = useSelector((state) => state.forms.bankData);
+  const [valueForm, setValueForm] = useState({});
+  const { bankDataIsActive, id } = useSelector((state) => state.forms);
+
   const dispatch = useDispatch();
-  //const id = useSelector((state) => state.forms);
-  //console.log(id);
+
   const {
     register,
     handleSubmit,
 
-    //watch,
+    watch,
     reset,
     //formState: { errors },
   } = useForm({
@@ -30,15 +31,26 @@ const FormBankData = () => {
       bankName: "",
     },
   });
+  useEffect(() => {
+    watch((value) => setValueForm({ value }));
+  }, [watch]);
+
   const closeForm = () => dispatch(bankData());
-  const onSubmit = (data) => {
+
+  const onSubmit = (valueForm) => {
     closeForm();
-    dispatch(contact());
-    setValue(data);
+    dispatch(
+      setDataWithBank({
+        data: valueForm,
+        id: id,
+      })
+    );
+    dispatch(contact(id));
+    //setValue(data);
     reset();
-    console.log(value, "value");
   };
-  if (!formActive) return null;
+
+  if (!bankDataIsActive) return null;
 
   return (
     <div

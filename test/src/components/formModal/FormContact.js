@@ -9,7 +9,7 @@ import { contact, bankData } from "../../store/redusers/formsSlise";
 
 const FormContact = () => {
   const [value, setValue] = useState({});
-  const formIsActive = useSelector((state) => state.forms.contact);
+  const formIsActive = useSelector((state) => state.forms.contactIsActive);
   const dispatch = useDispatch();
   const closeForm = () => dispatch(contact());
 

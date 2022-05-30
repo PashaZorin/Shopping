@@ -9,8 +9,10 @@ import { setDataWithInvoise } from "../../store/redusers/dataSlise";
 import { v4 as uuidv4 } from "uuid";
 
 const FormIvoiceAddress = () => {
-  const [value, setValue] = useState({});
-  const formIsActive = useSelector((state) => state.forms.invoiseAddress);
+  const [valueForm, setValueForm] = useState({});
+  const formIsActiveIsActive = useSelector(
+    (state) => state.forms.invoiseAddressIsActive
+  );
   const dispatch = useDispatch();
 
   const closeForm = () => dispatch(invoiseAddress());
@@ -32,34 +34,25 @@ const FormIvoiceAddress = () => {
       country: "",
     },
   });
-  console.log(value, "value");
-  const onSubmit = (value) => {
+  useEffect(() => {
+    watch((value) => setValueForm({ ...value, id: uuidv4() }));
+  }, [watch]);
+
+  const onSubmit = (valueForm) => {
+    const idForm = uuidv4();
     dispatch(
       setDataWithInvoise({
-        data: value,
+        ...valueForm,
+        id: idForm,
       })
     );
-    console.log(value, "valueOnSubmit");
     closeForm();
-    dispatch(bankData(value.id));
-    //setValue(data);
+    dispatch(bankData(idForm));
     reset();
   };
   const inputEl = useRef(null);
 
-  //useEffect(() => {
-  //  if (formIsActive) {
-  //    console.log(inputEl, "input");
-  //    inputEl.current.focus();
-  //  }
-  //}, [formIsActive]);
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) =>
-      setValue({ ...value, id: uuidv4() })
-    );
-  }, [watch]);
-
-  if (!formIsActive) return null;
+  if (!formIsActiveIsActive) return null;
 
   return (
     <div

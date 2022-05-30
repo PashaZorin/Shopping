@@ -3,22 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 export const formsSlise = createSlice({
   name: "forms",
   initialState: {
-    invoiseAddress: false,
-    bankData: false,
-    contact: false,
+    invoiseAddressIsActive: false,
+    bankDataIsActive: false,
+    contactIsActive: false,
     id: null,
   },
   reducers: {
     invoiseAddress: (state, action) => {
-      state.invoiseAddress = !state.invoiseAddress;
+      state.invoiseAddressIsActive = !state.invoiseAddressIsActive;
       state.id = action.payload;
     },
     bankData: (state, action) => {
-      state.bankData = !state.bankData;
+      state.bankDataIsActive = !state.bankDataIsActive;
       state.id = action.payload;
     },
     contact: (state, action) => {
-      state.contact = !state.contact;
+      state.contactIsActive = !state.contactIsActive;
       state.id = action.payload;
     },
   },

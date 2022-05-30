@@ -8,7 +8,6 @@ import { invoiseAddress } from "../../store/redusers/formsSlise";
 const TablePage = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
-  //console.log(data, "data");
   const arr = [
     {
       name: "Name",
