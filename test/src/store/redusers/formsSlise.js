@@ -6,17 +6,20 @@ export const formsSlise = createSlice({
     invoiseAddress: false,
     bankData: false,
     contact: false,
+    id: null,
   },
   reducers: {
-    invoiseAddress: (state) => {
+    invoiseAddress: (state, action) => {
       state.invoiseAddress = !state.invoiseAddress;
-      console.log("aaaa");
+      state.id = action.payload;
     },
-    bankData: (state) => {
+    bankData: (state, action) => {
       state.bankData = !state.bankData;
+      state.id = action.payload;
     },
-    contact: (state) => {
+    contact: (state, action) => {
       state.contact = !state.contact;
+      state.id = action.payload;
     },
   },
 });

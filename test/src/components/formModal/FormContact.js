@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../buttons/Button";
 //import { FormInput } from "./FormInput";
+
 import "./form.scss";
-import { contact } from "../../store/redusers/formsSlise";
+import { contact, bankData } from "../../store/redusers/formsSlise";
 
 const FormContact = () => {
   const [value, setValue] = useState({});
@@ -18,15 +19,13 @@ const FormContact = () => {
 
     //watch,
     reset,
-    formState: { errors },
+    //formState: { errors },
   } = useForm({
     defaultValues: {
-      company: "",
-      name: "",
-      additional: "",
-      street: "",
-      postalCode: "",
-      country: "",
+      fax: "",
+      email: "",
+      birthday: "",
+      homePage: "",
     },
   });
 
@@ -35,7 +34,6 @@ const FormContact = () => {
     setValue(data);
     reset();
   };
-  //console.log(value, "value");
   if (!formIsActive) return null;
   return (
     <div
@@ -46,56 +44,59 @@ const FormContact = () => {
         }
       }}>
       <form className='form__content' onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='form__title'>Invoice Address</h2>
+        <h2 className='form__title'>Contact</h2>
 
         <label className='form__item-conteiner'>
-          <span>Company &#9733;</span>
+          <span>Fax &#10034;</span>
           <input
             className='form__item'
             //type='text'
-            {...register("company", { required: true })}
+            {...register("fax", { required: true })}
           />
           {/*{errors.company?.type === "required" && "First name is required"}*/}
         </label>
         <label className='form__item-conteiner'>
-          <span>Name &#9733;</span>
+          <span>E-mail &#9733;</span>
           <input
             className='form__item'
-            {...register("name", { required: true })}
+            {...register("email", {
+              required: true,
+              pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+            })}
+            type='email'
           />
         </label>
         <label className='form__item-conteiner'>
-          <span>additional</span>
-          <input className='form__item' {...register("additional")} />
-        </label>
-        <label className='form__item-conteiner'>
-          <span>street</span>
-          <input className='form__item' {...register("street")} />
-        </label>
-        <label className='form__item-conteiner'>
-          <span>Postal Code</span>
-          <input className='form__item' {...register("postalCode")} />
-        </label>
-        <label className='form__item-conteiner'>
-          <span> Country </span>
-          <select
-            {...register("country")}
+          <span>Birthday</span>
+          <input
             className='form__item'
-            style={{ width: "242px" }}>
-            <option value='Ukraine'>Ukraine</option>
-            <option value='Poland'>Poland</option>
-            <option value='Germany'>Germany</option>
-          </select>
+            {...register("birthday")}
+            type='date'
+            value='2020-12-12'
+          />
+        </label>
+        <label className='form__item-conteiner'>
+          <span>Homepage</span>
+          <input className='form__item' {...register("homepage")} />
         </label>
 
         <div className='form__btns'>
           <Button
             text='Cancel'
-            type={"submit"}
+            type={"button"}
             className='button__green'
             onClick={closeForm}
           />
-          <Button text='Next' className='button__transparent' />
+          <Button
+            text='Previous'
+            type={"button"}
+            className='button__transparent'
+            onClick={() => {
+              closeForm();
+              dispatch(bankData());
+            }}
+          />
+          <Button text='Next' className='button__transparent' type='submit' />
         </div>
       </form>
     </div>

@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../buttons/Button";
 //import { FormInput } from "./FormInput";
 import "./form.scss";
-import { invoiseAddress } from "../../store/redusers/formsSlise";
+import { invoiseAddress, bankData } from "../../store/redusers/formsSlise";
+import { setDataWithInvoise } from "../../store/redusers/dataSlise";
+import { v4 as uuidv4 } from "uuid";
 
 const FormIvoiceAddress = () => {
   const [value, setValue] = useState({});
   const formIsActive = useSelector((state) => state.forms.invoiseAddress);
   const dispatch = useDispatch();
+
   const closeForm = () => dispatch(invoiseAddress());
 
   const {
     register,
     handleSubmit,
 
-    //watch,
+    watch,
     reset,
-    formState: { errors },
+    //formState: { errors },
   } = useForm({
     defaultValues: {
       company: "",
@@ -29,14 +32,35 @@ const FormIvoiceAddress = () => {
       country: "",
     },
   });
-
-  const onSubmit = (data) => {
-    console.log(data, "data");
-    setValue(data);
+  console.log(value, "value");
+  const onSubmit = (value) => {
+    dispatch(
+      setDataWithInvoise({
+        data: value,
+      })
+    );
+    console.log(value, "valueOnSubmit");
+    closeForm();
+    dispatch(bankData(value.id));
+    //setValue(data);
     reset();
   };
-  //console.log(value, "value");
+  const inputEl = useRef(null);
+
+  //useEffect(() => {
+  //  if (formIsActive) {
+  //    console.log(inputEl, "input");
+  //    inputEl.current.focus();
+  //  }
+  //}, [formIsActive]);
+  useEffect(() => {
+    const subscription = watch((value, { name, type }) =>
+      setValue({ ...value, id: uuidv4() })
+    );
+  }, [watch]);
+
   if (!formIsActive) return null;
+
   return (
     <div
       className='form__conteiner'
@@ -52,6 +76,7 @@ const FormIvoiceAddress = () => {
           <span>Company &#9733;</span>
           <input
             className='form__item'
+            ref={inputEl}
             //type='text'
             {...register("company", { required: true })}
           />
@@ -89,13 +114,8 @@ const FormIvoiceAddress = () => {
         </label>
 
         <div className='form__btns'>
-          <Button
-            text='Cancel'
-            type={"submit"}
-            className='button__green'
-            onClick={closeForm}
-          />
-          <Button text='Next' className='button__transparent' />
+          <Button text='Cancel' className='button__green' onClick={closeForm} />
+          <Button text='Next' className='button__transparent' type={"submit"} />
         </div>
       </form>
     </div>

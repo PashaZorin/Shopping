@@ -2,11 +2,13 @@ import React from "react";
 import Button from "../buttons/Button";
 import "./tablePage.scss";
 import { ReactComponent as Svg } from "../svg/delete.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { invoiseAddress } from "../../store/redusers/formsSlise";
 
 const TablePage = () => {
   const dispatch = useDispatch();
+  const data = useSelector((state) => state.data);
+  //console.log(data, "data");
   const arr = [
     {
       name: "Name",
@@ -68,8 +70,6 @@ const TablePage = () => {
             <th className='table__header-item'>Homepage</th>
           </tr>
           {arr.map((e, i) => {
-            console.log(e, "e");
-
             return (
               <tr key={i} className='table__content'>
                 <td className='table__content-item'>
