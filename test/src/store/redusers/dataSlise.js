@@ -7,19 +7,27 @@ export const formsSlise = createSlice({
   name: "data",
   initialState,
   reducers: {
-    setDataWithInvoise: (state, payload) => {
-      state.todos.push(payload);
-      console.log(payload, "setDataWithInvoise");
+    setDataWithInvoise: (state, action) => {
+      //const newState = { ...state.todos, ...action.payload };
+      //return newState;
+      console.log(state, "state");
+      console.log(action.payload, "setDataWithInvoise");
+      state.todos.push(action.payload);
     },
-    setDataWithBank: (state, payload) => {
-      //state.push(action.payload);
-      //const newState = state.map((e) => e.id === payload.id);
-
-      console.log(state.todos, "state.todos");
-      console.log(payload, "setDataWithBank");
+    addData: (state, action) => {
+      const index = state.todos.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+      state.todos[index] = { ...state.todos[index], ...action.payload.data };
     },
+    //setDataWithContact: (state, action) => {
+    //  const index = state.todos.findIndex(
+    //    (todo) => todo.id === action.payload.id
+    //  );
+    //  state.todos[index] = { ...state.todos[index], ...action.payload.data };
+    //},
   },
 });
 
-export const { setDataWithInvoise, setDataWithBank } = formsSlise.actions;
+export const { setDataWithInvoise, addData } = formsSlise.actions;
 export default formsSlise;

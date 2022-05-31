@@ -6,13 +6,12 @@ import Button from "../buttons/Button";
 
 import "./form.scss";
 import { contact, bankData } from "../../store/redusers/formsSlise";
+import { addData } from "../../store/redusers/dataSlise";
 
 const FormContact = () => {
-  const [value, setValue] = useState({});
-  const formIsActive = useSelector((state) => state.forms.contactIsActive);
+  const { contactIsActive, id } = useSelector((state) => state.forms);
   const dispatch = useDispatch();
   const closeForm = () => dispatch(contact());
-
   const {
     register,
     handleSubmit,
@@ -31,10 +30,16 @@ const FormContact = () => {
 
   const onSubmit = (data) => {
     console.log(data, "data");
-    setValue(data);
+    closeForm();
+    dispatch(
+      addData({
+        data,
+        id,
+      })
+    );
     reset();
   };
-  if (!formIsActive) return null;
+  if (!contactIsActive) return null;
   return (
     <div
       className='form__conteiner'

@@ -9,7 +9,7 @@ import {
   contact,
   invoiseAddress,
 } from "../../store/redusers/formsSlise";
-import { setDataWithBank } from "../../store/redusers/dataSlise";
+import { addData } from "../../store/redusers/dataSlise";
 
 const FormBankData = () => {
   const [valueForm, setValueForm] = useState({});
@@ -37,12 +37,12 @@ const FormBankData = () => {
 
   const closeForm = () => dispatch(bankData());
 
-  const onSubmit = (valueForm) => {
+  const onSubmit = (data) => {
     closeForm();
     dispatch(
-      setDataWithBank({
-        data: valueForm,
-        id: id,
+      addData({
+        data,
+        id,
       })
     );
     dispatch(contact(id));
