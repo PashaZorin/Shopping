@@ -20,14 +20,11 @@ export const formsSlise = createSlice({
       );
       state.todos[index] = { ...state.todos[index], ...action.payload.data };
     },
-    //setDataWithContact: (state, action) => {
-    //  const index = state.todos.findIndex(
-    //    (todo) => todo.id === action.payload.id
-    //  );
-    //  state.todos[index] = { ...state.todos[index], ...action.payload.data };
-    //},
+    removeData: (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+    },
   },
 });
 
-export const { setDataWithInvoise, addData } = formsSlise.actions;
+export const { setDataWithInvoise, addData, removeData } = formsSlise.actions;
 export default formsSlise;

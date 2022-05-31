@@ -4,11 +4,12 @@ import "./tablePage.scss";
 import { ReactComponent as Svg } from "../svg/delete.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { invoiseAddress } from "../../store/redusers/formsSlise";
+import { removeData } from "../../store/redusers/dataSlise";
 
 const TablePage = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.data);
-  console.log(data);
+  const data = useSelector((state) => state.data.todos);
+  //console.log(data);
   const arr = [
     {
       name: "Name",
@@ -69,10 +70,13 @@ const TablePage = () => {
             <th className='table__header-item'>Birthday</th>
             <th className='table__header-item'>Homepage</th>
           </tr>
-          {arr.map((e, i) => {
+          {data.map((e, i) => {
+            if (!e.email) return null;
             return (
               <tr key={i} className='table__content'>
-                <td className='table__content-item'>
+                <td
+                  className='table__content-item'
+                  onClick={() => dispatch(removeData(e.id))}>
                   <Svg />
                 </td>
                 <td className='table__content-item'>{e.company}</td>

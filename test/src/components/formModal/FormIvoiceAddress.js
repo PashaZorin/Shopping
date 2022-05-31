@@ -38,11 +38,11 @@ const FormIvoiceAddress = () => {
     watch((value) => setValueForm({ ...value, id: uuidv4() }));
   }, [watch]);
 
-  const onSubmit = (valueForm) => {
+  const onSubmit = (data) => {
     const idForm = uuidv4();
     dispatch(
       setDataWithInvoise({
-        ...valueForm,
+        ...data,
         id: idForm,
       })
     );
