@@ -6,6 +6,7 @@ import Button from "../buttons/Button";
 import "./form.scss";
 import { invoiseAddress, bankData } from "../../store/redusers/formsSlise";
 import { setDataWithInvoise } from "../../store/redusers/dataSlise";
+import { removeData } from "../../store/redusers/dataSlise";
 import { v4 as uuidv4 } from "uuid";
 
 const FormIvoiceAddress = () => {
@@ -34,9 +35,9 @@ const FormIvoiceAddress = () => {
       country: "",
     },
   });
-  useEffect(() => {
-    watch((value) => setValueForm({ ...value, id: uuidv4() }));
-  }, [watch]);
+  //useEffect(() => {
+  //  watch((value) => setValueForm({ ...value, id: uuidv4() }));
+  //}, [watch]);
 
   const onSubmit = (data) => {
     const idForm = uuidv4();

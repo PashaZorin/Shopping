@@ -9,39 +9,7 @@ import { removeData } from "../../store/redusers/dataSlise";
 const TablePage = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data.todos);
-  //console.log(data);
-  const arr = [
-    {
-      name: "Name",
-      company: "company",
-      additional: "Additional",
-      street: "Street",
-      postalCode: "Postal Code",
-      country: "Country",
-      iban: "IBAN",
-      bic: "BIC",
-      bankName: "Bank Name",
-      fax: "fax",
-      email: "E-mail",
-      birthday: "Birthday",
-      homePage: "Homepage",
-    },
-    {
-      name: "Name",
-      company: "company",
-      additional: "Additional",
-      street: "Street",
-      postalCode: "Postal Code",
-      country: "Country",
-      iban: "IBAN",
-      bic: "BIC",
-      bankName: "Bank Name",
-      fax: "fax",
-      email: "E-mail",
-      birthday: "Birthday",
-      homePage: "Homepage",
-    },
-  ];
+  console.log(data);
 
   return (
     <div className='table__conteiner'>
