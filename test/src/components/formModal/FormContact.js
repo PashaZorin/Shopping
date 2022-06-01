@@ -2,23 +2,23 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../buttons/Button";
-//import { FormInput } from "./FormInput";
 
 import "./form.scss";
 import { contact, bankData } from "../../store/redusers/formsSlise";
-import { addData } from "../../store/redusers/dataSlise";
+import { addData, removeData } from "../../store/redusers/dataSlise";
 
 const FormContact = () => {
   const { contactIsActive, id } = useSelector((state) => state.forms);
   const dispatch = useDispatch();
-  const closeForm = () => dispatch(contact());
+  const closeForm = () => {
+    dispatch(contact());
+  };
+
   const {
     register,
     handleSubmit,
 
-    //watch,
     reset,
-    //formState: { errors },
   } = useForm({
     defaultValues: {
       fax: "",
@@ -46,6 +46,8 @@ const FormContact = () => {
       onClick={(e) => {
         if (e.target.className === "form__conteiner") {
           closeForm();
+          reset();
+          dispatch(removeData(id));
         }
       }}>
       <form className='form__content' onSubmit={handleSubmit(onSubmit)}>
@@ -54,8 +56,8 @@ const FormContact = () => {
         <label className='form__item-conteiner'>
           <span>Fax &#10034;</span>
           <input
+            autoFocus='fax'
             className='form__item'
-            //type='text'
             {...register("fax", { required: true })}
           />
           {/*{errors.company?.type === "required" && "First name is required"}*/}
@@ -77,7 +79,8 @@ const FormContact = () => {
             className='form__item'
             {...register("birthday")}
             type='date'
-            value='2020-12-12'
+            value='12-12-2021'
+            //value='2018-07-22 '
           />
         </label>
         <label className='form__item-conteiner'>
@@ -90,7 +93,11 @@ const FormContact = () => {
             text='Cancel'
             type={"button"}
             className='button__green'
-            onClick={closeForm}
+            onClick={() => {
+              dispatch(removeData(id));
+              closeForm();
+              reset();
+            }}
           />
           <Button
             text='Previous'

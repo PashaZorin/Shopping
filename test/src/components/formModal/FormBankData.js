@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../buttons/Button";
-//import { FormInput } from "./FormInput";
 import { useDispatch, useSelector } from "react-redux";
 import "./form.scss";
 import {
@@ -9,31 +8,25 @@ import {
   contact,
   invoiseAddress,
 } from "../../store/redusers/formsSlise";
-import { addData } from "../../store/redusers/dataSlise";
+import { addData, removeData } from "../../store/redusers/dataSlise";
 
 const FormBankData = () => {
-  const [valueForm, setValueForm] = useState({});
   const { bankDataIsActive, id } = useSelector((state) => state.forms);
 
+  useEffect(() => {
+    if (bankDataIsActive) {
+      console.log(window.history, "window.history");
+    }
+  }, [bankDataIsActive]);
   const dispatch = useDispatch();
 
-  const {
-    register,
-    handleSubmit,
-
-    watch,
-    reset,
-    //formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       iban: "",
       bic: "",
       bankName: "",
     },
   });
-  useEffect(() => {
-    watch((value) => setValueForm({ value }));
-  }, [watch]);
 
   const closeForm = () => dispatch(bankData());
 
@@ -46,7 +39,6 @@ const FormBankData = () => {
       })
     );
     dispatch(contact(id));
-    //setValue(data);
     reset();
   };
 
@@ -58,6 +50,7 @@ const FormBankData = () => {
       onClick={(e) => {
         if (e.target.className === "form__conteiner") {
           closeForm();
+          dispatch(removeData(id));
           reset();
         }
       }}>
@@ -67,6 +60,7 @@ const FormBankData = () => {
         <label className='form__item-conteiner'>
           <span>IBAN &#9733;</span>
           <input
+            autoFocus='iban'
             className='form__item'
             {...register("iban", { required: true })}
           />
@@ -91,7 +85,10 @@ const FormBankData = () => {
           <Button
             text='Cancel'
             className='button__transparent'
-            onClick={closeForm}
+            onClick={() => {
+              closeForm();
+              dispatch(removeData(id));
+            }}
           />
           <Button
             text='Previous'

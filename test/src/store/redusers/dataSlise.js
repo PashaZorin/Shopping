@@ -8,10 +8,6 @@ export const formsSlise = createSlice({
   initialState,
   reducers: {
     setDataWithInvoise: (state, action) => {
-      //const newState = { ...state.todos, ...action.payload };
-      //return newState;
-      console.log(state, "state");
-      console.log(action.payload, "setDataWithInvoise");
       state.todos.push(action.payload);
     },
     addData: (state, action) => {

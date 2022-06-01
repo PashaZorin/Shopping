@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../buttons/Button";
@@ -6,11 +6,9 @@ import Button from "../buttons/Button";
 import "./form.scss";
 import { invoiseAddress, bankData } from "../../store/redusers/formsSlise";
 import { setDataWithInvoise } from "../../store/redusers/dataSlise";
-import { removeData } from "../../store/redusers/dataSlise";
 import { v4 as uuidv4 } from "uuid";
 
 const FormIvoiceAddress = () => {
-  const [valueForm, setValueForm] = useState({});
   const formIsActiveIsActive = useSelector(
     (state) => state.forms.invoiseAddressIsActive
   );
@@ -22,7 +20,6 @@ const FormIvoiceAddress = () => {
     register,
     handleSubmit,
 
-    watch,
     reset,
     //formState: { errors },
   } = useForm({
@@ -35,9 +32,6 @@ const FormIvoiceAddress = () => {
       country: "",
     },
   });
-  //useEffect(() => {
-  //  watch((value) => setValueForm({ ...value, id: uuidv4() }));
-  //}, [watch]);
 
   const onSubmit = (data) => {
     const idForm = uuidv4();
@@ -51,7 +45,6 @@ const FormIvoiceAddress = () => {
     dispatch(bankData(idForm));
     reset();
   };
-  const inputEl = useRef(null);
 
   if (!formIsActiveIsActive) return null;
 
@@ -61,6 +54,7 @@ const FormIvoiceAddress = () => {
       onClick={(e) => {
         if (e.target.className === "form__conteiner") {
           closeForm();
+          //reset();
         }
       }}>
       <form className='form__content' onSubmit={handleSubmit(onSubmit)}>
@@ -70,7 +64,7 @@ const FormIvoiceAddress = () => {
           <span>Company &#9733;</span>
           <input
             className='form__item'
-            ref={inputEl}
+            autoFocus='company'
             //type='text'
             {...register("company", { required: true })}
           />

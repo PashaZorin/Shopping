@@ -9,7 +9,6 @@ import { removeData } from "../../store/redusers/dataSlise";
 const TablePage = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data.todos);
-  console.log(data);
 
   return (
     <div className='table__conteiner'>
