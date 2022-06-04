@@ -14,14 +14,17 @@ const FormIvoiceAddress = () => {
   );
   const dispatch = useDispatch();
 
-  const closeForm = () => dispatch(invoiseAddress());
+  const closeForm = () => {
+    dispatch(invoiseAddress());
+    reset();
+  };
 
   const {
     register,
     handleSubmit,
 
     reset,
-    //formState: { errors },
+    formState: { errors },
   } = useForm({
     defaultValues: {
       company: "",
@@ -43,67 +46,75 @@ const FormIvoiceAddress = () => {
     );
     closeForm();
     dispatch(bankData(idForm));
-    reset();
   };
 
   if (!formIsActiveIsActive) return null;
 
   return (
     <div
-      className='form__conteiner'
+      className="form__conteiner"
       onClick={(e) => {
         if (e.target.className === "form__conteiner") {
           closeForm();
-          //reset();
         }
-      }}>
-      <form className='form__content' onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='form__title'>Invoice Address</h2>
+      }}
+    >
+      <form className="form__content" onSubmit={handleSubmit(onSubmit)}>
+        <h2 className="form__title">Invoice Address</h2>
 
-        <label className='form__item-conteiner'>
-          <span>Company &#9733;</span>
+        {/*<label className="form__item-conteiner">*/}
+        <label className="form__item-conteiner">
+          <span
+            className={errors.company?.type === "required" ? "error" : null}
+          >
+            Company &#9733;
+          </span>
           <input
-            className='form__item'
-            autoFocus='company'
+            //className="form__item"
+            className="form__item"
+            autoFocus="company"
             //type='text'
             {...register("company", { required: true })}
           />
           {/*{errors.company?.type === "required" && "First name is required"}*/}
         </label>
-        <label className='form__item-conteiner'>
-          <span>Name &#9733;</span>
+        <label className="form__item-conteiner">
+          <span className={errors.name?.type === "required" ? "error" : null}>
+            Name &#9733;
+          </span>
           <input
-            className='form__item'
+            className="form__item"
             {...register("name", { required: true })}
           />
         </label>
-        <label className='form__item-conteiner'>
+        <label className="form__item-conteiner">
           <span>additional</span>
-          <input className='form__item' {...register("additional")} />
+          <input className="form__item" {...register("additional")} />
         </label>
-        <label className='form__item-conteiner'>
+        <label className="form__item-conteiner">
           <span>street</span>
-          <input className='form__item' {...register("street")} />
+          <input className="form__item" {...register("street")} />
         </label>
-        <label className='form__item-conteiner'>
+        <label className="form__item-conteiner">
           <span>Postal Code</span>
-          <input className='form__item' {...register("postalCode")} />
+          <input className="form__item" {...register("postalCode")} />
         </label>
-        <label className='form__item-conteiner'>
+        <label className="form__item-conteiner">
           <span> Country </span>
           <select
             {...register("country")}
-            className='form__item'
-            style={{ width: "242px" }}>
-            <option value='Ukraine'>Ukraine</option>
-            <option value='Poland'>Poland</option>
-            <option value='Germany'>Germany</option>
+            className="form__item"
+            style={{ width: "242px" }}
+          >
+            <option value="Ukraine">Ukraine</option>
+            <option value="Poland">Poland</option>
+            <option value="Germany">Germany</option>
           </select>
         </label>
 
-        <div className='form__btns'>
-          <Button text='Cancel' className='button__green' onClick={closeForm} />
-          <Button text='Next' className='button__transparent' type={"submit"} />
+        <div className="form__btns">
+          <Button text="Cancel" className="button__green" onClick={closeForm} />
+          <Button text="Next" className="button__transparent" type={"submit"} />
         </div>
       </form>
     </div>

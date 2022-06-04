@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "../buttons/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,14 +13,14 @@ import { addData, removeData } from "../../store/redusers/dataSlise";
 const FormBankData = () => {
   const { bankDataIsActive, id } = useSelector((state) => state.forms);
 
-  useEffect(() => {
-    if (bankDataIsActive) {
-      console.log(window.history, "window.history");
-    }
-  }, [bankDataIsActive]);
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       iban: "",
       bic: "",
@@ -46,59 +46,67 @@ const FormBankData = () => {
 
   return (
     <div
-      className='form__conteiner'
+      className="form__conteiner"
       onClick={(e) => {
         if (e.target.className === "form__conteiner") {
           closeForm();
           dispatch(removeData(id));
           reset();
         }
-      }}>
-      <form className='form__content' onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='form__title'>Bank Data</h2>
+      }}
+    >
+      <form className="form__content" onSubmit={handleSubmit(onSubmit)}>
+        <h2 className="form__title">Bank Data</h2>
 
-        <label className='form__item-conteiner'>
-          <span>IBAN &#9733;</span>
+        <label className="form__item-conteiner">
+          <span className={errors.iban?.type === "required" ? "error" : null}>
+            IBAN &#9733;
+          </span>
           <input
-            autoFocus='iban'
-            className='form__item'
+            autoFocus="iban"
+            className="form__item"
             {...register("iban", { required: true })}
           />
-          {/*{errors.company?.type === "required" && "First name is required"}*/}
         </label>
-        <label className='form__item-conteiner'>
-          <span>BIC &#9733;</span>
+        <label className="form__item-conteiner">
+          <span className={errors.bic?.type === "required" ? "error" : null}>
+            BIC &#9733;
+          </span>
           <input
-            className='form__item'
+            className="form__item"
             {...register("bic", { required: true })}
           />
         </label>
-        <label className='form__item-conteiner'>
-          <span>Bank Name &#9733;</span>
+        <label className="form__item-conteiner">
+          <span
+            className={errors.bankName?.type === "required" ? "error" : null}
+          >
+            Bank Name &#9733;
+          </span>
           <input
-            className='form__item'
+            className="form__item"
             {...register("bankName", { required: true })}
           />
         </label>
 
-        <div className='form__btns'>
+        <div className="form__btns">
           <Button
-            text='Cancel'
-            className='button__transparent'
+            text="Cancel"
+            className="button__transparent"
             onClick={() => {
               closeForm();
               dispatch(removeData(id));
             }}
           />
           <Button
-            text='Previous'
-            className='button__transparent'
+            text="Previous"
+            className="button__transparent"
             onClick={() => {
               closeForm();
               dispatch(invoiseAddress());
             }}
           />
-          <Button text='Next' className='button__green' type='submit' />
+          <Button text="Next" className="button__green" type="submit" />
         </div>
       </form>
     </div>
