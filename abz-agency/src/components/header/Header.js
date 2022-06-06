@@ -1,5 +1,4 @@
 import React from "react";
-import "./header.scss";
 import Button from "../Button";
 import LogoImgSvg from "../svg/LogoImgSvg";
 import LogoTextSvg from "../svg/LogoTextSvg";
