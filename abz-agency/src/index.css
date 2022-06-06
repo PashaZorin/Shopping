@@ -1,0 +1,22 @@
+ @import './reset.css';
+ body{
+  font-family: 'Nunito', sans-serif;
+ }
+.outer-container{
+  width: 1170px;
+  margin: 0 auto;
+}
+.inner-container{
+  width: 380px;
+  margin: 0 auto;
+}
+.button{
+  padding: 4px 22px;
+  background-color: #F4E041;
+  border-radius: 80px;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+
+
