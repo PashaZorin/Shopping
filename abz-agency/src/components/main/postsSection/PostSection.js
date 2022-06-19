@@ -83,8 +83,8 @@ const PostSection = () => {
                 helperText="+38(###)###-##-##"
               />
               <Box height={20} />
-              <RadioGroupPost /> нет значение , форма не отправляется , отступы
-              гавно\\
+              <RadioGroupPost />{" "}
+              {/**нет значение , форма не отправляется ,отступы гавно**/}
               <Box height={50} />
               <PostInput
                 type="file"
