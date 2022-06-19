@@ -1,0 +1,29 @@
+.get {
+  text-align: center;
+  margin-top: 140px;
+  padding-bottom: 140px;
+  &__content {
+    margin: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 29px;
+    font-size: 16px;
+  }
+  &__item {
+    width: 370px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    word-wrap: break-word;
+    img {
+      border-radius: 100%;
+    }
+    span {
+      display: block;
+      line-height: 26px;
+    }
+  }
+  &__item-name {
+    margin: 20px 0 26px 0;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button";
-import LogoImgSvg from "../svg/LogoImgSvg";
-import LogoTextSvg from "../svg/LogoTextSvg";
+import LogoImgSvg from "../../images/svg/LogoImgSvg";
+import LogoTextSvg from "../../images/svg/LogoTextSvg";
 
 const Header = () => {
   return (
@@ -17,7 +17,6 @@ const Header = () => {
             <Button text="Sign up" />
           </div>
         </div>
-        {/* перенести в меин, поправить контеинер  изменить классы */}
       </div>
     </header>
   );

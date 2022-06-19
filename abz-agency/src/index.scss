@@ -1,0 +1,62 @@
+@import "./reset.css";
+body {
+  font-family: "Nunito", sans-serif;
+}
+.outer-container {
+  width: 1170px;
+  margin: 0 auto;
+}
+.inner-container {
+  width: 380px;
+  margin: 0 auto;
+}
+.title {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 40px;
+}
+.button {
+  padding: 3px 21px;
+  font-size: 16px;
+  line-height: 26px;
+  background-color: #f4e041;
+  border-radius: 80px;
+  border-color: transparent;
+  cursor: pointer;
+}
+.header {
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+  &__buttons {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+.main {
+  width: 100%;
+  background-color: #e5e5e5;
+}
+.about {
+  &__content {
+    text-align: center;
+    background-image: url(../src/images/headerBackground1.png);
+    color: #fff;
+    padding: 163px 0;
+    background-repeat: no-repeat;
+  }
+  &__content-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    margin: 21px 0 31px 0;
+  }
+}

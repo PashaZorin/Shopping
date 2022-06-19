@@ -1,7 +1,7 @@
 import React from "react";
 import AboutSection from "./aboutSection/AboutSection";
 import GetSection from "./getSection/GetSection";
-import PostSection from "./postSection/PostSection";
+import PostSection from "./postsSection/PostSection";
 
 const Main = () => {
   return (
