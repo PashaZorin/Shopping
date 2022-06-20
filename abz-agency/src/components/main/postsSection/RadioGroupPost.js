@@ -1,11 +1,13 @@
 import React from "react";
 import Radio from "@mui/material/Radio";
+import { useField } from "formik";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
-const RadioGroupPost = () => {
+const RadioGroupPost = (props) => {
+  const [field] = useField(props);
   return (
     <section className="post__input-radio-conteiner">
       <FormControl
@@ -16,12 +18,9 @@ const RadioGroupPost = () => {
         <FormLabel id="demo-radio-buttons-group-label">
           Select your position
         </FormLabel>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          name="position"
-        >
+        <RadioGroup aria-labelledby="demo-radio-buttons-group-label" {...field}>
           <FormControlLabel
-            value="frontendDeveloper"
+            value="Frontend developer"
             control={<Radio />}
             label="Frontend developer"
             className="post__input-radio-item"
@@ -31,21 +30,21 @@ const RadioGroupPost = () => {
             }}
           />
           <FormControlLabel
-            value="backendDeveloper"
+            value="Backend developer"
             control={<Radio />}
             label="Backend developer"
             name="position"
             className="post__input-radio-item"
           />
           <FormControlLabel
-            value="designer"
+            value="Designer"
             control={<Radio />}
             name="position"
             label="Designer"
             className="post__input-radio-item"
           />
           <FormControlLabel
-            value="oa"
+            value="QA"
             control={<Radio />}
             name="position"
             label="QA"

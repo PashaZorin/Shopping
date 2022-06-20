@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import Button from "../../Button";
 import SomePerson from "./SomePerson";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../../store/todoSlice";
+import { fetchDataGet } from "../../../store/todoSlice";
 import "./getSection.scss";
 import { v4 as uuidv4 } from "uuid";
 const GetSection = () => {
   const dispatch = useDispatch();
-  const getData = (data) => dispatch(fetchData(data));
+  const getData = (data) => dispatch(fetchDataGet(data));
   const cardList = useSelector((state) => state.todos.cards);
   const _URL = useSelector((state) => state.todos._URL);
   const disabledBtn = useSelector((state) => state.todos.disabledBtn);

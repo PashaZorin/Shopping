@@ -1,10 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchData = createAsyncThunk(
-  "todos/fetchData",
+export const fetchDataGet = createAsyncThunk(
+  "todos/fetchDataGet",
   async function (action) {
     const respons = await fetch(`${action}`);
     const data = await respons.json();
+    return data;
+  }
+);
+export const fetchDataPost = createAsyncThunk(
+  "todos/fetchDataPost",
+  async function (action) {
+    console.log(action, "todos/fetchDataPost");
+    const respons = await fetch(
+      "https://frontend-test-assignment-api.abz.agency/api/v1/users",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(action),
+      }
+    );
+    const data = await respons.json();
+    //console.log(action, "todos/fetchDataPost");
     return data;
   }
 );
@@ -23,8 +42,8 @@ const todoSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchData.pending]: (state, action) => ({ ...state, pending: true }),
-    [fetchData.fulfilled]: (state, action) => {
+    [fetchDataGet.pending]: (state, action) => ({ ...state, pending: true }),
+    [fetchDataGet.fulfilled]: (state, action) => {
       return {
         ...state,
         pending: false,
@@ -33,7 +52,16 @@ const todoSlice = createSlice({
         disabledBtn: action.payload.total_pages === action.payload.page && true,
       };
     },
-    [fetchData.rejected]: (state, action) => console.log("rejected"),
+    [fetchDataPost.rejected]: (state, action) =>
+      console.log(action.payload, "rejected"),
+
+    [fetchDataPost.pending]: (state, action) =>
+      console.log(action.payload, "action/pending"),
+    [fetchDataPost.fulfilled]: (state, action) => {
+      console.log(action.payload, "fulfilled");
+    },
+    [fetchDataGet.rejected]: (state, action) =>
+      console.log(action.payload, "rejected"),
   },
 });
 export const { getTodos } = todoSlice.actions;

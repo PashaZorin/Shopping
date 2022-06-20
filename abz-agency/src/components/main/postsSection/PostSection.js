@@ -1,36 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./postSection.scss";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
 import { Formik, Form } from "formik";
 import PostInput from "./PostInput";
 import Button from "../../Button";
 import { Box } from "@mui/material";
 import RadioGroupPost from "./RadioGroupPost";
+import NumberInput from "./NumberFormat";
+import { fetchDataPost } from "../../../store/todoSlice";
+import { v4 as uuidv4 } from "uuid";
+
 const PostSection = () => {
+  const dispatch = useDispatch();
+  const [tokenId, SetTokenId] = useState("");
+
+  useEffect(() => {
+    try {
+      const data = async function () {
+        const respons = await fetch(
+          "https://frontend-test-assignment-api.abz.agency/api/v1/token"
+        );
+        const data = await respons.json();
+        if (data.success === true) {
+          SetTokenId(data.token);
+          return data.token;
+        }
+      };
+      data();
+    } catch (error) {
+      new Error(error);
+    }
+  }, []);
+  //console.log(tokenId, "token");
+
   const initialValues = {
-    yorName: "",
+    name: "",
     email: "",
     phone: "",
     position: "",
-    filePhoto: "",
+    photo: "",
   };
 
   const onSubmit = (value, { resetForm }) => {
-    console.log(value, "value");
-
-    resetForm();
+    //console.log(value, "value");
+    dispatch(
+      fetchDataPost({
+        ...value,
+        position_id: uuidv4(),
+        token: `${tokenId}`,
+      })
+    );
   };
 
   const validationSchema = Yup.object().shape({
-    yorName: Yup.string()
+    name: Yup.string()
       .required("The field is required")
       .matches(/[A-Za-zА-Яа-я]/, "only letters,"),
     email: Yup.string("not correct")
       .email("not correct")
-      //.min(2)
-      //.max(100)
       .required("This field is requried"),
-
     phone: Yup.number()
       .typeError("That doesn't look like a phone number")
       .positive("A phone number can't start with a minus")
@@ -38,7 +67,7 @@ const PostSection = () => {
       .min(10)
       .required("The field is required"),
     position: Yup.string().required(""),
-    filePhoto: Yup.string().required(""),
+    photo: Yup.string().required(""),
   });
 
   return (
@@ -50,16 +79,12 @@ const PostSection = () => {
         onSubmit={onSubmit}
         initialValues={initialValues}
       >
-        {({ isValid, dirty, error, touched }) => {
-          //console.log(error, "error");
+        {({ isValid, dirty }) => {
           return (
             <Form className="post__form inner-container">
               <PostInput
                 type="text"
-                name="yorName"
-                //error
-                //error={isValid && dirty}
-                //as={TextField}
+                name="name"
                 fullWidth
                 label="Your name"
                 className="post-input"
@@ -73,23 +98,19 @@ const PostSection = () => {
                 className="post-input"
               />
               <Box height={47} />
-              <PostInput
-                type="phone"
+              <NumberInput
                 name="phone"
-                //as={TextField}
-                fullWidth
                 label="Phone"
+                type="text"
+                fullWidth
                 className="post-input"
-                helperText="+38(###)###-##-##"
               />
               <Box height={20} />
-              <RadioGroupPost />{" "}
-              {/**нет значение , форма не отправляется ,отступы гавно**/}
+              <RadioGroupPost name="position" />
               <Box height={50} />
               <PostInput
                 type="file"
-                name="filePhoto"
-                //as={TextField}
+                name="photo"
                 fullWidth
                 className="post-input"
               />

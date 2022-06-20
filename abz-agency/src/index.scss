@@ -21,8 +21,12 @@ body {
   line-height: 26px;
   background-color: #f4e041;
   border-radius: 80px;
-  border-color: transparent;
   cursor: pointer;
+  border-color: transparent;
+  :disabled {
+    background-color: #b4b4b4;
+    background-color: transparent;
+  }
 }
 .header {
   &__menu {
