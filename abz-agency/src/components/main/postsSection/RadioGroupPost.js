@@ -23,7 +23,6 @@ const RadioGroupPost = (props) => {
             value="Frontend developer"
             control={<Radio />}
             label="Frontend developer"
-            className="post__input-radio-item"
             name="position"
             sx={{
               paddingBottom: 0,
@@ -34,21 +33,18 @@ const RadioGroupPost = (props) => {
             control={<Radio />}
             label="Backend developer"
             name="position"
-            className="post__input-radio-item"
           />
           <FormControlLabel
             value="Designer"
             control={<Radio />}
             name="position"
             label="Designer"
-            className="post__input-radio-item"
           />
           <FormControlLabel
             value="QA"
             control={<Radio />}
             name="position"
             label="QA"
-            className="post__input-radio-item"
           />
         </RadioGroup>
       </FormControl>

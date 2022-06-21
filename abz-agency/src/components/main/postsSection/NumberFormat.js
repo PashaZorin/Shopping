@@ -7,21 +7,17 @@ const NumberInput = (props) => {
   const [field, meta] = useField(props);
   const { error, touched } = meta;
   return (
-    <NumberFormat
-      //value={value}
-      //name={name}
-      //  mask={}
-      customInput={TextField}
-      {...props}
-      {...field}
-      error={touched && !!error}
-      format="+38##########"
-      type="text"
-      //thousandSeparator={thousandSeparator ? " " : null}
-      //onValueChange={({ value: v }) =>
-      //  onChange({ target: { name, value: v } })
-      //}
-    />
+    <>
+      <NumberFormat
+        customInput={TextField}
+        {...props}
+        {...field}
+        error={touched && !!error}
+        format="+38##########"
+        type="text"
+      />
+      <span className="post__error-messege">{touched && error}</span>
+    </>
   );
 };
 

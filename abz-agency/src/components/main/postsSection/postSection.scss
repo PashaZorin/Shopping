@@ -31,7 +31,22 @@
     line-height: 26px;
     text-align: start;
   }
-  &__input-radio-item {
-    transform: translate(2px 0px);
+  &__upload-button {
+    background-color: aqua;
   }
+  &__upload-input {
+    //background-color: aqua;
+    border-radius: 0px;
+    :nth-child(1) {
+    }
+    :nth-child(2) {
+      margin-left: -9px;
+      border-radius: 0px;
+      width: 330px;
+      //height: 54px;
+    }
+  }
+}
+.css-j204z7-MuiFormControlLabel-root {
+  margin-top: -9px;
 }

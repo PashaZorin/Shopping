@@ -5,10 +5,25 @@ body {
 .outer-container {
   width: 1170px;
   margin: 0 auto;
+  @media screen and (max-width: 1200px) {
+    width: 904px;
+  }
+  @media screen and (max-width: 960px) {
+    width: 704px;
+  }
+  @media screen and (max-width: 730px) {
+    width: 404px;
+  }
+  @media screen and (max-width: 460px) {
+    width: 328px;
+  }
 }
 .inner-container {
   width: 380px;
   margin: 0 auto;
+  @media screen and (max-width: 460px) {
+    width: 328px;
+  }
 }
 .title {
   font-weight: 400;
@@ -42,6 +57,9 @@ body {
   &__buttons {
     display: flex;
     gap: 12px;
+    :first-child {
+      padding: 2px 26px;
+    }
   }
 }
 
@@ -52,10 +70,21 @@ body {
 .about {
   &__content {
     text-align: center;
-    background-image: url(../src/images/headerBackground1.png);
     color: #fff;
     padding: 163px 0;
     background-repeat: no-repeat;
+    background-image: url(../src/images/imgBg2560.png);
+    @media screen and (max-width: 1024px) {
+      background-image: url(../src/images/imgBg1024.png);
+    }
+    @media screen and (max-width: 768px) {
+      background-image: url(../src/images/imgBg768.png);
+      padding: 83px 0;
+    }
+    @media screen and (max-width: 360px) {
+      background-image: url(../src/images/imgBg360.png);
+      padding: 71px 0;
+    }
   }
   &__content-text {
     font-weight: 400;

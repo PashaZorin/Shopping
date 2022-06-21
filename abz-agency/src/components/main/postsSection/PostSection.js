@@ -10,6 +10,7 @@ import RadioGroupPost from "./RadioGroupPost";
 import NumberInput from "./NumberFormat";
 import { fetchDataPost } from "../../../store/todoSlice";
 import { v4 as uuidv4 } from "uuid";
+import UploadButtons from "./UploadButtons";
 
 const PostSection = () => {
   const dispatch = useDispatch();
@@ -105,15 +106,16 @@ const PostSection = () => {
                 fullWidth
                 className="post-input"
               />
-              <Box height={20} />
+              <Box height={43} />
               <RadioGroupPost name="position" />
-              <Box height={50} />
-              <PostInput
+              <Box height={39} />
+              {/*<PostInput
                 type="file"
                 name="photo"
                 fullWidth
                 className="post-input"
-              />
+              />*/}
+              <UploadButtons />
               <Box height={48} />
               <Button
                 text="Sign up"
