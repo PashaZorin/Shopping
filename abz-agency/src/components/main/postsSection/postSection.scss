@@ -35,15 +35,15 @@
     background-color: aqua;
   }
   &__upload-input {
-    //background-color: aqua;
-    border-radius: 0px;
-    :nth-child(1) {
+    :nth-child() {
+    }
+    :nth-child(3) {
+      padding: 15.5px 13px;
     }
     :nth-child(2) {
-      margin-left: -9px;
-      border-radius: 0px;
+      border-radius: 0 4px 4px 0;
+      transform: translate(-12px);
       width: 330px;
-      //height: 54px;
     }
   }
 }
