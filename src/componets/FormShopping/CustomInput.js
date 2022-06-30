@@ -5,7 +5,7 @@ import { useField } from "formik";
 const CustomInput = (props) => {
   const { type, placeholder, className } = props;
 
-  const [field, meta, helpers] = useField(props);
+  const [field, meta] = useField(props);
   const { error, touched } = meta;
 
   return (
