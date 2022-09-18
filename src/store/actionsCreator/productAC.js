@@ -4,16 +4,7 @@ import {
   TOGGLE_CARTS,
 } from "../acrions/productAction";
 
-export const getProductAC = () => {
-  return async (dispatch) => {
-    const { products } = await fetch(
-      "http://localhost:3000/shopping//Data.json"
-    )
-      .then((response) => response.json())
-      .catch((e) => console.log(`Error! ${e}`));
-    dispatch({ type: GET_PRODUCT, payload: products });
-  };
-};
+export const getProductAC = () => ({ type: GET_PRODUCT });
 
 export const toggleFavoriteAC = (id) => ({
   type: TOGGLE_FAVORITES,
