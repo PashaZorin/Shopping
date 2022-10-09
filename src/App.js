@@ -27,7 +27,7 @@ function App() {
       <AlertMessege messege="Спасибо за покупку" />
       <FormShopping cards={arrProduct} />
       <Routes>
-        <Route path="/shopping/" element={<Cards cards={arrProduct} />} />
+        <Route path="/shopping" element={<Cards cards={arrProduct} />} />
         <Route
           path="/shopping/PageFavorites"
           element={<PageFavorites cards={arrProduct} />}
