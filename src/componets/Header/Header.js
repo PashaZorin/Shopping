@@ -24,20 +24,17 @@ const Header = () => {
       <nav className="header__nav">
         <ul className="header__items">
           <li className="header__item">
-            <NavLink className="header__item-link" to="../shopping/">
+            <NavLink className="header__item-link" to="/">
               Главная
             </NavLink>
           </li>
           <li className="header__item">
-            <NavLink className="header__item-link" to="../shopping/PageCart">
-              Корзина{" "}
+            <NavLink className="header__item-link" to="/PageCart">
+              Корзина
             </NavLink>
           </li>
           <li className="header__item">
-            <NavLink
-              className="header__item-link"
-              to="../shopping/PageFavorites"
-            >
+            <NavLink className="header__item-link" to="/PageFavorites">
               Избранное
             </NavLink>
           </li>
